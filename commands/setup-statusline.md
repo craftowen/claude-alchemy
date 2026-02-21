@@ -16,14 +16,14 @@ Configure Claude Code to use the subscription usage statusline.
 {
   "statusLine": {
     "type": "command",
-    "command": "python3 ${CLAUDE_PLUGIN_ROOT}/scripts/statusline.py"
+    "command": "python3 ${CLAUDE_PLUGIN_ROOT}/plugins/statusline-usage/scripts/statusline.py"
   }
 }
 ```
-Where `${CLAUDE_PLUGIN_ROOT}` is replaced with the actual absolute path to this plugin's root directory (the parent of the `commands/` folder containing this file).
+Where `${CLAUDE_PLUGIN_ROOT}` is replaced with the actual absolute path to the plugin's root directory (the `claude-alchemy` repository root).
 
 3. Preserve all other existing settings in the file
 4. Confirm to the user that the statusline has been configured
 5. Tell the user to restart Claude Code for the change to take effect
 
-**Important:** The plugin root path must be resolved to an absolute path. Find it by locating this command file and going up two directories.
+**Important:** The plugin root path must be resolved to an absolute path. Find it by locating this command file and going up one directory.
