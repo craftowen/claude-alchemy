@@ -1,0 +1,9 @@
+{
+  "slug": "claude-alchemy",
+  "displayName": "Claude Alchemy",
+  "tagline": "클로드 코드를 극한으로 활용하기 위한 플러그인",
+  "categories": ["productivity", "developer-tools"],
+  "keywords": ["claude-code", "skills", "agents", "hooks"],
+  "repository": "",
+  "homepage": ""
+}
