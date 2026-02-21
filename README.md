@@ -21,7 +21,23 @@ claude --plugin-dir .
 skills/                  ← 스킬 모음
 agents/                  ← 에이전트 모음
 hooks/                   ← 훅 모음
+plugins/                 ← 플러그인 모음
+  statusline-usage/      ← 구독 사용량 스테이터스라인
 ```
+
+## 플러그인
+
+### statusline-usage
+
+구독 사용량을 실시간 표시하는 스테이터스라인.
+
+```
+Opus 4.6 | main* | 20k/200k | 5h 18% (2h34m) | 7d 32% (3d20h)
+```
+
+- macOS 키체인에서 OAuth 토큰 읽기 → Anthropic Usage API 호출
+- 외부 의존성 없음 (Python stdlib only)
+- `/setup-statusline` 명령어로 설치
 
 ## 사용법
 
