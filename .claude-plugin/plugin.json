@@ -1,6 +1,6 @@
 {
   "name": "claude-alchemy",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "클로드 코드를 극한으로 활용하기 위한 스킬·에이전트·훅 모음",
   "author": "owen",
   "license": "MIT",
