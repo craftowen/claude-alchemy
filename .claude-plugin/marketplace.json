@@ -1,7 +1,5 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "claude-alchemy",
-  "description": "Claude Code를 극한으로 활용하기 위한 스킬·에이전트·훅·플러그인 모음",
   "owner": {
     "name": "owen",
     "email": ""
@@ -9,15 +7,8 @@
   "plugins": [
     {
       "name": "claude-alchemy",
-      "description": "A comprehensive Claude Code plugin collection with productivity tools, recommended plugin installer, and subscription usage statusline",
-      "version": "0.3.0",
-      "author": {
-        "name": "owen",
-        "email": ""
-      },
       "source": "plugin",
-      "category": "productivity",
-      "homepage": "https://github.com/craftowen/claude-alchemy"
+      "description": "A comprehensive Claude Code plugin collection with productivity tools, recommended plugin installer, and subscription usage statusline"
     }
   ]
 }
