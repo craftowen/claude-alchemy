@@ -10,12 +10,32 @@
 ## 프로젝트 구조
 
 ```
-skills/          ← 스킬 모음
-agents/          ← 에이전트 모음
-hooks/           ← 훅 모음
-plugins/         ← 플러그인 모음
-  statusline-usage/  ← 구독 사용량 스테이터스라인
+.claude-plugin/
+  plugin.json        ← 플러그인 매니페스트
+  marketplace.json   ← 마켓플레이스 정의
+commands/            ← 슬래시 명령어
+scripts/             ← 스크립트 (statusline.py 등)
+skills/              ← 스킬 모음
+agents/              ← 에이전트 모음
+hooks/               ← 훅 모음
 ```
+
+## 환경 요구사항
+
+- Python 3 (statusline 스크립트용)
+- macOS (키체인에서 OAuth 토큰 읽기)
+
+## 개발
+
+```bash
+# 로컬에서 플러그인 로드
+claude --plugin-dir /path/to/claude-alchemy
+```
+
+## 슬래시 명령어
+
+- `/install-recommended` — 추천 플러그인·MCP 서버·CLI 도구 일괄 설치
+- `/setup-statusline` — 구독 사용량 스테이터스라인 설정
 
 ## 플러그인 개발 규칙
 
