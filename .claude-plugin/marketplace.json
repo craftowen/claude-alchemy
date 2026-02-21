@@ -8,6 +8,18 @@
   },
   "plugins": [
     {
+      "name": "claude-alchemy",
+      "description": "A comprehensive Claude Code plugin collection with productivity tools, recommended plugin installer, and subscription usage statusline",
+      "version": "0.3.0",
+      "author": {
+        "name": "owen",
+        "email": ""
+      },
+      "source": ".",
+      "category": "productivity",
+      "homepage": "https://github.com/craftowen/claude-alchemy"
+    },
+    {
       "name": "statusline-usage",
       "description": "Statusline showing model, git branch, context window, and real-time subscription usage (5h/7d) via OAuth API",
       "version": "1.0.0",
