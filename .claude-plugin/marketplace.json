@@ -4,6 +4,6 @@
   "tagline": "클로드 코드를 극한으로 활용하기 위한 플러그인",
   "categories": ["productivity", "developer-tools"],
   "keywords": ["claude-code", "skills", "agents", "hooks"],
-  "repository": "",
-  "homepage": ""
+  "repository": "https://github.com/craftowen/claude-alchemy",
+  "homepage": "https://github.com/craftowen/claude-alchemy"
 }
