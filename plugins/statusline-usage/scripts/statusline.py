@@ -82,9 +82,8 @@ def git_info(d):
         return "", False, ""
 
 
-def fetch_usage():
-    """Background: read OAuth token from Keychain, call usage API, write cache."""
-    script = f'''
+def _fetch_script():
+    return f'''
 import json, subprocess, urllib.request
 from pathlib import Path
 from datetime import datetime, timezone
@@ -112,8 +111,18 @@ try:
 except Exception:
     pass
 '''
-    subprocess.Popen([sys.executable, "-c", script],
-                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
+def fetch_usage():
+    """Fetch usage data. Sync on first run (no cache), background thereafter."""
+    script = _fetch_script()
+    if not CACHE_FILE.exists():
+        subprocess.run([sys.executable, "-c", script],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                       timeout=10)
+    else:
+        subprocess.Popen([sys.executable, "-c", script],
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
 def main():
