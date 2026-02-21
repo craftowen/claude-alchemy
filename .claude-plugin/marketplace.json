@@ -1,5 +1,6 @@
 {
   "name": "claude-alchemy",
+  "description": "Claude Code power user toolkit with productivity tools, recommended plugin installer, and subscription usage statusline",
   "owner": {
     "name": "owen"
   },

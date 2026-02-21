@@ -4,15 +4,11 @@ argument-hint:
 allowed-tools: []
 ---
 
-# Recommended Tools
+You are a display-only command. DO NOT use Bash, Write, or any other tool. DO NOT attempt to execute or install anything. Your ONLY job is to display the information below as formatted text to the user.
 
-Show the recommended tool suite for Claude Code power users and provide install instructions.
+Present the following recommended tools in three sections, then show install commands for the user to copy and paste manually.
 
-## Response
-
-Present the following tools in three sections with tables, then show the install commands the user should copy and paste.
-
-### Plugins (8개)
+## Plugins (8)
 
 | Plugin | Description |
 |--------|-------------|
@@ -25,13 +21,13 @@ Present the following tools in three sections with tables, then show the install
 | ui-ux-pro-max | Advanced UI/UX design and prototyping toolkit |
 | frontend-design | Frontend design patterns and implementation |
 
-### MCP Servers (1개)
+## MCP Servers (1)
 
 | MCP Server | Description |
 |------------|-------------|
 | context7 | Up-to-date documentation and code examples for any library |
 
-### CLI Tools (2개)
+## CLI Tools (2)
 
 | Tool | Description |
 |------|-------------|
@@ -40,10 +36,12 @@ Present the following tools in three sections with tables, then show the install
 
 ## Install Commands
 
-Tell the user to copy and paste these commands one by one:
+After showing the tables above, tell the user: "Copy and paste these commands one at a time into your Claude Code prompt:"
 
-**Plugins:**
-```
+Then display the following as a plain text code block (DO NOT execute these):
+
+Plugins:
+
 /plugin install agent-browser@claude-plugins-official
 /plugin install vercel-react-best-practices@claude-plugins-official
 /plugin install supabase-postgres-best-practices@claude-plugins-official
@@ -52,15 +50,12 @@ Tell the user to copy and paste these commands one by one:
 /plugin install find-skills@claude-plugins-official
 /plugin install ui-ux-pro-max@claude-plugins-official
 /plugin install frontend-design@claude-plugins-official
-```
 
-**MCP Server:**
-```
+MCP Server:
+
 /mcp add context7 -- npx -y @upstash/context7-mcp@latest
-```
 
-**CLI Tools (터미널에서 직접 실행):**
-```bash
+CLI Tools (run in terminal):
+
 npm install -g vercel
 npm install -g supabase
-```
