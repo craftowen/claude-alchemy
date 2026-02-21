@@ -1,14 +1,18 @@
 ---
-description: Install recommended plugins, MCP servers, and CLI tools for Claude Code power users
+description: Show recommended plugins, MCP servers, and CLI tools for Claude Code power users
 argument-hint:
-allowed-tools: [Bash]
+allowed-tools: []
 ---
 
-# Install Recommended Tools
+# Recommended Tools
 
-Install the recommended tool suite for Claude Code power users.
+Show the recommended tool suite for Claude Code power users and provide install instructions.
 
-## 1. Plugins
+## Response
+
+Present the following tools in three sections with tables, then show the install commands the user should copy and paste.
+
+### Plugins (8개)
 
 | Plugin | Description |
 |--------|-------------|
@@ -21,45 +25,42 @@ Install the recommended tool suite for Claude Code power users.
 | ui-ux-pro-max | Advanced UI/UX design and prototyping toolkit |
 | frontend-design | Frontend design patterns and implementation |
 
-## 2. MCP Servers
+### MCP Servers (1개)
 
 | MCP Server | Description |
 |------------|-------------|
 | context7 | Up-to-date documentation and code examples for any library |
 
-## 3. CLI Tools
+### CLI Tools (2개)
 
 | Tool | Description |
 |------|-------------|
 | vercel | Vercel CLI for deployment and project management |
 | supabase | Supabase CLI for local development and database management |
 
-## Steps
+## Install Commands
 
-1. Show the user the full list above (Plugins, MCP Servers, CLI Tools)
+Tell the user to copy and paste these commands one by one:
 
-2. Install plugins via Bash, one by one:
-```bash
-claude plugin install agent-browser@claude-plugins-official
-claude plugin install vercel-react-best-practices@claude-plugins-official
-claude plugin install supabase-postgres-best-practices@claude-plugins-official
-claude plugin install web-design-guidelines@claude-plugins-official
-claude plugin install code-simplifier@claude-plugins-official
-claude plugin install find-skills@claude-plugins-official
-claude plugin install ui-ux-pro-max@claude-plugins-official
-claude plugin install frontend-design@claude-plugins-official
+**Plugins:**
+```
+/plugin install agent-browser@claude-plugins-official
+/plugin install vercel-react-best-practices@claude-plugins-official
+/plugin install supabase-postgres-best-practices@claude-plugins-official
+/plugin install web-design-guidelines@claude-plugins-official
+/plugin install code-simplifier@claude-plugins-official
+/plugin install find-skills@claude-plugins-official
+/plugin install ui-ux-pro-max@claude-plugins-official
+/plugin install frontend-design@claude-plugins-official
 ```
 
-3. Add MCP servers via Bash:
-```bash
-claude mcp add context7 -- npx -y @upstash/context7-mcp@latest
+**MCP Server:**
+```
+/mcp add context7 -- npx -y @upstash/context7-mcp@latest
 ```
 
-4. Install CLI tools via npm:
+**CLI Tools (터미널에서 직접 실행):**
 ```bash
 npm install -g vercel
 npm install -g supabase
 ```
-
-5. Report the result of each installation (success, already installed, or failed)
-6. Summarize the results at the end
