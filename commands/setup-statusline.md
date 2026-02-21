@@ -16,7 +16,7 @@ Configure Claude Code to use the subscription usage statusline.
 {
   "statusLine": {
     "type": "command",
-    "command": "python3 ${CLAUDE_PLUGIN_ROOT}/plugins/statusline-usage/scripts/statusline.py"
+    "command": "python3 ${CLAUDE_PLUGIN_ROOT}/scripts/statusline.py"
   }
 }
 ```

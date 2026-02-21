@@ -1,9 +1,0 @@
-{
-  "name": "statusline-usage",
-  "version": "1.0.0",
-  "description": "Statusline showing model, git branch, context window, and real-time subscription usage (5h/7d) via OAuth API",
-  "author": {
-    "name": "owen",
-    "email": ""
-  }
-}

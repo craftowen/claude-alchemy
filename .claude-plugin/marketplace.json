@@ -18,18 +18,6 @@
       "source": ".",
       "category": "productivity",
       "homepage": "https://github.com/craftowen/claude-alchemy"
-    },
-    {
-      "name": "statusline-usage",
-      "description": "Statusline showing model, git branch, context window, and real-time subscription usage (5h/7d) via OAuth API",
-      "version": "1.0.0",
-      "author": {
-        "name": "owen",
-        "email": ""
-      },
-      "source": "./plugins/statusline-usage",
-      "category": "productivity",
-      "homepage": "https://github.com/craftowen/claude-alchemy/tree/main/plugins/statusline-usage"
     }
   ]
 }
