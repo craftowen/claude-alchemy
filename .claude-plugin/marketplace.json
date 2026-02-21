@@ -1,9 +1,23 @@
 {
-  "slug": "claude-alchemy",
-  "displayName": "Claude Alchemy",
-  "tagline": "클로드 코드를 극한으로 활용하기 위한 플러그인",
-  "categories": ["productivity", "developer-tools"],
-  "keywords": ["claude-code", "skills", "agents", "hooks"],
-  "repository": "https://github.com/craftowen/claude-alchemy",
-  "homepage": "https://github.com/craftowen/claude-alchemy"
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-alchemy",
+  "description": "Claude Code를 극한으로 활용하기 위한 스킬·에이전트·훅·플러그인 모음",
+  "owner": {
+    "name": "owen",
+    "email": ""
+  },
+  "plugins": [
+    {
+      "name": "statusline-usage",
+      "description": "Statusline showing model, git branch, context window, and real-time subscription usage (5h/7d) via OAuth API",
+      "version": "1.0.0",
+      "author": {
+        "name": "owen",
+        "email": ""
+      },
+      "source": "./plugins/statusline-usage",
+      "category": "productivity",
+      "homepage": "https://github.com/craftowen/claude-alchemy/tree/main/plugins/statusline-usage"
+    }
+  ]
 }
