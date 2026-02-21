@@ -1,29 +1,14 @@
 ---
-description: Show recommended plugins and install instructions
+description: Install recommended plugins for Claude Code power users
 argument-hint:
-allowed-tools: []
+allowed-tools: [Bash]
 ---
 
-# Recommended Plugins
+# Install Recommended Plugins
 
-Display the recommended plugin suite for Claude Code power users and provide install instructions.
+Install the recommended plugin suite for Claude Code power users.
 
-## Response
-
-Tell the user to run each of the following commands to install the recommended plugins:
-
-```
-/plugin install agent-browser@claude-plugins-official
-/plugin install vercel-react-best-practices@claude-plugins-official
-/plugin install supabase-postgres-best-practices@claude-plugins-official
-/plugin install web-design-guidelines@claude-plugins-official
-/plugin install code-simplifier@claude-plugins-official
-/plugin install find-skills@claude-plugins-official
-/plugin install ui-ux-pro-max@claude-plugins-official
-/plugin install frontend-design@claude-plugins-official
-```
-
-Present them in a table format:
+## Plugins
 
 | Plugin | Description |
 |--------|-------------|
@@ -36,4 +21,21 @@ Present them in a table format:
 | ui-ux-pro-max | Advanced UI/UX design and prototyping toolkit |
 | frontend-design | Frontend design patterns and implementation |
 
-Tell the user they can copy and paste each command one by one, or use `/plugin` to browse and install interactively.
+## Steps
+
+1. Show the user the plugin list above
+2. Run each install command via Bash, one by one:
+
+```bash
+claude plugin install agent-browser@claude-plugins-official
+claude plugin install vercel-react-best-practices@claude-plugins-official
+claude plugin install supabase-postgres-best-practices@claude-plugins-official
+claude plugin install web-design-guidelines@claude-plugins-official
+claude plugin install code-simplifier@claude-plugins-official
+claude plugin install find-skills@claude-plugins-official
+claude plugin install ui-ux-pro-max@claude-plugins-official
+claude plugin install frontend-design@claude-plugins-official
+```
+
+3. Report the result of each installation (success, already installed, or failed)
+4. Summarize the results at the end
