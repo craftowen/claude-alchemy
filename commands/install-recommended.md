@@ -1,14 +1,14 @@
 ---
-description: Install recommended plugins for Claude Code power users
+description: Install recommended plugins, MCP servers, and CLI tools for Claude Code power users
 argument-hint:
 allowed-tools: [Bash]
 ---
 
-# Install Recommended Plugins
+# Install Recommended Tools
 
-Install the recommended plugin suite for Claude Code power users.
+Install the recommended tool suite for Claude Code power users.
 
-## Plugins
+## 1. Plugins
 
 | Plugin | Description |
 |--------|-------------|
@@ -21,11 +21,24 @@ Install the recommended plugin suite for Claude Code power users.
 | ui-ux-pro-max | Advanced UI/UX design and prototyping toolkit |
 | frontend-design | Frontend design patterns and implementation |
 
+## 2. MCP Servers
+
+| MCP Server | Description |
+|------------|-------------|
+| context7 | Up-to-date documentation and code examples for any library |
+
+## 3. CLI Tools
+
+| Tool | Description |
+|------|-------------|
+| vercel | Vercel CLI for deployment and project management |
+| supabase | Supabase CLI for local development and database management |
+
 ## Steps
 
-1. Show the user the plugin list above
-2. Run each install command via Bash, one by one:
+1. Show the user the full list above (Plugins, MCP Servers, CLI Tools)
 
+2. Install plugins via Bash, one by one:
 ```bash
 claude plugin install agent-browser@claude-plugins-official
 claude plugin install vercel-react-best-practices@claude-plugins-official
@@ -37,5 +50,16 @@ claude plugin install ui-ux-pro-max@claude-plugins-official
 claude plugin install frontend-design@claude-plugins-official
 ```
 
-3. Report the result of each installation (success, already installed, or failed)
-4. Summarize the results at the end
+3. Add MCP servers via Bash:
+```bash
+claude mcp add context7 -- npx -y @upstash/context7-mcp@latest
+```
+
+4. Install CLI tools via npm:
+```bash
+npm install -g vercel
+npm install -g supabase
+```
+
+5. Report the result of each installation (success, already installed, or failed)
+6. Summarize the results at the end
