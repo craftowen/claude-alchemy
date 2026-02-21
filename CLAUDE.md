@@ -22,3 +22,30 @@ plugins/         ← 플러그인 모음
 - 새 플러그인/스킬/에이전트/훅을 만들면 이 저장소(`plugins/`, `skills/`, `agents/`, `hooks/`)에 추가한다.
 - 로컬 전용 경로(`~/.claude/plugins/marketplaces/...`)가 아닌 이 저장소에 원본을 둔다.
 - 작업 완료 후 커밋/푸시까지 진행한다.
+
+## 마켓플레이스 스키마 (중요)
+
+`.claude-plugin/marketplace.json`은 반드시 공식 스키마를 따라야 한다.
+새 플러그인 추가 시 `plugins` 배열에 항목을 추가할 것.
+
+```json
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-alchemy",
+  "description": "...",
+  "owner": { "name": "owen", "email": "" },
+  "plugins": [
+    {
+      "name": "플러그인명",
+      "description": "설명",
+      "version": "1.0.0",
+      "author": { "name": "owen", "email": "" },
+      "source": "./plugins/플러그인명",
+      "category": "productivity"
+    }
+  ]
+}
+```
+
+필수 필드: `name`, `owner` (object), `plugins` (array).
+`slug`, `displayName`, `tagline` 등은 무시됨 — 공식 스키마와 다르면 설치 실패한다.
