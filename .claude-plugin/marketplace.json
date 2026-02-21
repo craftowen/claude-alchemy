@@ -1,13 +1,12 @@
 {
   "name": "claude-alchemy",
   "owner": {
-    "name": "owen",
-    "email": ""
+    "name": "owen"
   },
   "plugins": [
     {
       "name": "claude-alchemy",
-      "source": "./claude-alchemy",
+      "source": "./plugins/claude-alchemy",
       "description": "A comprehensive Claude Code plugin collection with productivity tools, recommended plugin installer, and subscription usage statusline"
     }
   ]
