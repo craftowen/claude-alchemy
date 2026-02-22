@@ -6,24 +6,19 @@ allowed-tools: [Read, Write, Edit, Bash]
 
 # Setup Statusline
 
-Configure Claude Code to show subscription usage in the statusline. Works on macOS, Linux, and Windows. Uses Node.js (already installed with Claude Code).
+Configure Claude Code to show subscription usage in the statusline.
 
 ## Steps
 
-### 1. Find the statusline script path
+### 1. Find the statusline script
 
-The script is located relative to THIS command file. Use these steps to resolve the absolute path:
+Run this command to find the script:
 
-1. This command file is at: `<this file's absolute path>`
-2. Go up one directory from `commands/` to reach the plugin root
-3. The script is at `<plugin root>/scripts/statusline.mjs`
-
-For example, if this command file is at `/Users/owen/.claude/plugins/cache/claude-alchemy/xyz/plugins/claude-alchemy/commands/setup-statusline.md`, then the script is at `/Users/owen/.claude/plugins/cache/claude-alchemy/xyz/plugins/claude-alchemy/scripts/statusline.mjs`.
-
-To verify the resolved path, run: `ls <resolved path>` using Bash. If the file doesn't exist, try finding it:
+```bash
+find ~/.claude/plugins -name "statusline.mjs" -path "*/claude-alchemy/*" 2>/dev/null | head -1
 ```
-find ~/.claude/plugins -name "statusline.mjs" -path "*/claude-alchemy/*" 2>/dev/null
-```
+
+Store the result as SCRIPT_PATH. If empty, the plugin may not be installed correctly — tell the user and stop.
 
 ### 2. Read current settings
 
@@ -31,23 +26,22 @@ Read `~/.claude/settings.json` (create it with `{}` if it doesn't exist).
 
 ### 3. Update the statusLine field
 
-Set the `statusLine` field using the resolved absolute path:
+Set the `statusLine` field:
 
 ```json
 {
   "statusLine": {
     "type": "command",
-    "command": "node <RESOLVED_ABSOLUTE_PATH>/scripts/statusline.mjs"
+    "command": "node <SCRIPT_PATH>"
   }
 }
 ```
 
-Preserve all other existing settings. Only update the `statusLine` field.
+Where `<SCRIPT_PATH>` is the absolute path found in step 1. Preserve all other existing settings.
 
-### 4. Confirm and instruct
+### 4. Confirm
 
 Tell the user:
-- Statusline has been configured.
-- The path set: `<the actual path used>`
-- Restart Claude Code for the change to take effect.
-- The statusline shows: Model | Git branch | Context usage | 5h usage % (reset timer) | 7d usage % (reset timer)
+- Statusline configured: `node <SCRIPT_PATH>`
+- Restart Claude Code to apply.
+- Shows: Model | Git branch | Context usage | 5h % (reset) | 7d % (reset)

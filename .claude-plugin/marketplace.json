@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "claude-alchemy",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "source": "./plugins/claude-alchemy",
       "description": "A comprehensive Claude Code plugin collection with productivity tools, recommended plugin installer, and subscription usage statusline",
       "author": {
