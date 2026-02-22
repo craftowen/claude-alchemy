@@ -14,7 +14,7 @@
 import { readFileSync, writeFileSync, existsSync } from "fs";
 import { join } from "path";
 import { homedir, platform } from "os";
-import { execFileSync, spawn, execFile } from "child_process";
+import { execFileSync, spawn } from "child_process";
 import { request } from "https";
 
 const HOME = homedir();

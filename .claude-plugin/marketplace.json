@@ -7,8 +7,13 @@
   "plugins": [
     {
       "name": "claude-alchemy",
+      "version": "0.3.0",
       "source": "./plugins/claude-alchemy",
-      "description": "A comprehensive Claude Code plugin collection with productivity tools, recommended plugin installer, and subscription usage statusline"
+      "description": "A comprehensive Claude Code plugin collection with productivity tools, recommended plugin installer, and subscription usage statusline",
+      "author": {
+        "name": "owen"
+      },
+      "category": "productivity"
     }
   ]
 }
