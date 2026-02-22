@@ -3,18 +3,24 @@
 Claude Code Statusline — subscription usage tracker
 Model | Git branch | 20k/200k | 5h 18% (2h34m) | 7d 32% (3d20h)
 
-Reads OAuth token from macOS Keychain, calls /api/oauth/usage.
+Cross-platform: macOS, Linux, Windows.
+Reads OAuth token from:
+  1. CLAUDE_CODE_OAUTH_TOKEN env var
+  2. macOS Keychain (macOS only)
+  3. ~/.claude/.credentials.json (all platforms)
 No external dependencies — Python stdlib only.
 """
 
 import json
 import sys
 import os
+import platform
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
 CACHE_FILE = Path.home() / ".claude" / "statusline_cache.json"
+CREDS_FILE = Path.home() / ".claude" / ".credentials.json"
 
 
 def rgb(r, g, b):
@@ -83,19 +89,43 @@ def git_info(d):
 
 
 def _fetch_script():
+    """Self-contained background script for usage fetch. Cross-platform."""
     return f'''
-import json, subprocess, urllib.request
+import json, os, platform, subprocess, urllib.request
 from pathlib import Path
 from datetime import datetime, timezone
 
 OUT = Path({json.dumps(str(CACHE_FILE))})
+CREDS = Path({json.dumps(str(CREDS_FILE))})
+
+token = None
+
+# 1. Env var
+token = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN")
+
+# 2. macOS Keychain
+if not token and platform.system() == "Darwin":
+    try:
+        r = subprocess.run(
+            ["security", "find-generic-password", "-s", "Claude Code-credentials", "-w"],
+            capture_output=True, text=True, timeout=3)
+        if r.returncode == 0 and r.stdout.strip():
+            token = json.loads(r.stdout.strip()).get("claudeAiOauth", {{}}).get("accessToken")
+    except Exception:
+        pass
+
+# 3. Credentials file (~/.claude/.credentials.json)
+if not token:
+    try:
+        if CREDS.exists():
+            token = json.loads(CREDS.read_text()).get("claudeAiOauth", {{}}).get("accessToken")
+    except Exception:
+        pass
+
+if not token:
+    raise SystemExit(1)
 
 try:
-    raw = subprocess.run(
-        ["security", "find-generic-password", "-s", "Claude Code-credentials", "-w"],
-        capture_output=True, text=True, timeout=3).stdout.strip()
-    token = json.loads(raw)["claudeAiOauth"]["accessToken"]
-
     req = urllib.request.Request("https://api.anthropic.com/api/oauth/usage", headers={{
         "Authorization": f"Bearer {{token}}",
         "anthropic-beta": "oauth-2025-04-20",
@@ -116,13 +146,14 @@ except Exception:
 def fetch_usage():
     """Fetch usage data. Sync on first run (no cache), background thereafter."""
     script = _fetch_script()
+    kwargs = dict(stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    # Windows needs CREATE_NO_WINDOW to avoid popup
+    if platform.system() == "Windows":
+        kwargs["creationflags"] = 0x08000000
     if not CACHE_FILE.exists():
-        subprocess.run([sys.executable, "-c", script],
-                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                       timeout=10)
+        subprocess.run([sys.executable, "-c", script], timeout=10, **kwargs)
     else:
-        subprocess.Popen([sys.executable, "-c", script],
-                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.Popen([sys.executable, "-c", script], **kwargs)
 
 
 def main():
