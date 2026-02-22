@@ -6,42 +6,38 @@ allowed-tools: [Read, Write, Edit, Bash]
 
 # Setup Statusline
 
-Configure Claude Code to show subscription usage in the statusline.
+Install the statusline script to `~/.claude/` and configure settings.
 
 ## Steps
 
-### 1. Find the statusline script
+### 1. Copy the script
 
-Run this command to find the script:
+Find the statusline.mjs bundled with this plugin and copy it to `~/.claude/statusline.mjs`:
 
 ```bash
-find ~/.claude/plugins -name "statusline.mjs" -path "*/claude-alchemy/*" 2>/dev/null | head -1
+find ~/.claude/plugins -name "statusline.mjs" -path "*/claude-alchemy/*" 2>/dev/null | head -1 | xargs -I{} cp {} ~/.claude/statusline.mjs
 ```
 
-Store the result as SCRIPT_PATH. If empty, the plugin may not be installed correctly — tell the user and stop.
+If `~/.claude/statusline.mjs` doesn't exist after this, tell the user the plugin might not be installed correctly and stop.
 
-### 2. Read current settings
+### 2. Update settings.json
 
-Read `~/.claude/settings.json` (create it with `{}` if it doesn't exist).
-
-### 3. Update the statusLine field
-
-Set the `statusLine` field:
+Read `~/.claude/settings.json` (create with `{}` if missing). Set the `statusLine` field:
 
 ```json
 {
   "statusLine": {
     "type": "command",
-    "command": "node <SCRIPT_PATH>"
+    "command": "node ~/.claude/statusline.mjs"
   }
 }
 ```
 
-Where `<SCRIPT_PATH>` is the absolute path found in step 1. Preserve all other existing settings.
+Preserve all other existing settings.
 
-### 4. Confirm
+### 3. Confirm
 
 Tell the user:
-- Statusline configured: `node <SCRIPT_PATH>`
+- Statusline installed to `~/.claude/statusline.mjs`
 - Restart Claude Code to apply.
 - Shows: Model | Git branch | Context usage | 5h % (reset) | 7d % (reset)
